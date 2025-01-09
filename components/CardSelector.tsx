@@ -15,7 +15,7 @@ const CardSelector: React.FC<CardSelectorProps> = ({
   onSelect
 }) => {
   const suits = ['♠', '♥', '♦', '♣'];
-  const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  const ranks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
   const cards = ranks.flatMap(rank => suits.map(suit => ({ rank, suit })));
 
   const handleCardClick = (card: string) => {

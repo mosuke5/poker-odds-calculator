@@ -1,4 +1,5 @@
 import styles from './ResultDisplay.module.css';
+import { Tooltip } from './Tooltip';
 
 interface ResultDisplayProps {
   winRate: number;
@@ -10,6 +11,19 @@ interface ResultDisplayProps {
     flop: string[];
   };
 }
+
+const handDescriptions: Record<string, string> = {
+  'ロイヤルストレートフラッシュ': 'A, K, Q, J, 10 のストレートで同じスート',
+  'ストレートフラッシュ': '5枚の連続した数字で同じスート',
+  'フォーカード': '同じ数字のカード4枚',
+  'フルハウス': 'スリーカードとワンペアの組み合わせ',
+  'フラッシュ': '同じスートのカード5枚',
+  'ストレート': '5枚の連続した数字',
+  'スリーカード': '同じ数字のカード3枚',
+  'ツーペア': '同じ数字のカード2組',
+  'ワンペア': '同じ数字のカード2枚',
+  'ハイカード': '役がない場合の最も強いカード'
+};
 
 const ResultDisplay: React.FC<ResultDisplayProps> = ({
   winRate,
@@ -59,16 +73,28 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
       </div>
 
       <h4 className={styles.subtitle}>役の出現確率</h4>
-      <div className={styles.handProbabilities}>
-        {Object.entries(handProbabilities).map(([hand, probability]) => (
-          <div key={hand} className={styles.probabilityItem}>
-            <span className={styles.handName}>{hand}</span>
-            <span className={styles.probabilityValue}>
-              {formatPercentage(probability)}
-            </span>
-          </div>
-        ))}
-      </div>
+      <table className={styles.probabilityTable}>
+        <thead>
+          <tr>
+            <th>役</th>
+            <th>確率</th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(handProbabilities).map(([hand, probability]) => (
+            <tr key={hand} className={styles.probabilityRow}>
+              <td>{hand}</td>
+              <td>{formatPercentage(probability)}</td>
+              <td>
+                <Tooltip content={handDescriptions[hand] || '説明なし'}>
+                  <span className={styles.infoIcon}>ℹ️</span>
+                </Tooltip>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
