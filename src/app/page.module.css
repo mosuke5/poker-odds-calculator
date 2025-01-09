@@ -1,0 +1,41 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2d3748;
+}
+
+.cardSelectors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.calculateButton {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 2rem;
+}
+
+.calculateButton:hover {
+  background-color: #3182ce;
+}
+
+.calculateButton:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}

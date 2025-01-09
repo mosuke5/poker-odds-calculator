@@ -1,0 +1,129 @@
+.container {
+  margin: 1rem 0;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.cardGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.numberRow {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.cardGrid:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .cardGrid {
+    gap: 0.3rem;
+  }
+  
+  .card {
+    width: 50px;
+    height: 75px;
+  }
+}
+
+.cardButton {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cardButton:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.cardButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cardButton.selected {
+  border-color: #4caf50;
+}
+
+.card {
+  width: 50px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  opacity: 0.1;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 2px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  font-size: 1.5rem;
+}
+
+.rank {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.suit {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.red {
+  color: #d32f2f;
+}
+
+.blue {
+  color: #2196F3;
+}
+
+.green {
+  color: #4CAF50;
+}
+
+.black {
+  color: #212121;
+}
